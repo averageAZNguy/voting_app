@@ -1,0 +1,78 @@
+<% include partials/header %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="container">
+    <h1>Add new poll</h1>    
+</div>
+
+<div class="container">
+    <button class="btn btn-default" id="addchoice">Add choice</button>
+<form action="/main" method="POST">
+    <div id="form-group">
+        <form-group>
+            <label for="title">Poll Question</label>
+            <input type="text" class="form-control" name="poll[subject]" placeholder="Pick your favorite starter Pokemon!">
+        </form-group>
+        <ul>
+        <li>
+        <form-group class="row">
+            <!--<label for="choice3">Option 3</label>-->
+            <div class="col-md-8">
+                <input type="text" class="form-control col-xs-8" name="choice[1]" placeholder="choice1">
+            </div>
+            <!--<span class="delete col-md-4">X</span>-->
+        </form-group>
+        </li>
+        <li>
+        <form-group class="row">
+            <!--<label for="choice3">Option 3</label>-->
+            <div class="col-md-8">
+                <input type="text" class="form-control col-xs-8" name="choice[2]" placeholder="choice2">
+            </div>
+            <!--<span class="delete col-md-4">X</span>-->
+        </form-group>
+        </li>
+       <li>
+        <form-group class="row">
+            <!--<label for="choice3">Option 3</label>-->
+            <div class="col-md-8">
+                <input type="text" class="form-control col-xs-8" name="choice[3]" placeholder="choice3">
+            </div>
+            <span class="delete col-md-4">X</span>
+        </form-group>
+        </li>
+    </ul>
+    
+    <input type="submit">
+</form>
+<a href="/main">Go Back</a>
+</div>
+
+<script>
+    // Add more options
+      $('#addchoice').on('click', function(){
+          var formgroup = $('form-group');
+           var number = formgroup.length;
+           var newForm = '<li><form-group class="row"><div class="col-md-8"><input type="text" class="form-control" name="choice['+number+']" placeholder="choice'+number+'"></div><span class="delete col-md-4">X</span></form-group></li>';
+           $('ul').append(newForm);
+      });
+    // REMOVE OPTIONS
+    $('ul').on('click', 'span', function(){
+        $(this).parent().remove();
+        // RENAME & REORDER ELEMENTS
+        var formgroup = $('ul form-group div input');
+           for(var i =0; i < formgroup.length; i++){
+               var n = i + 1;
+               formgroup[i].name = 'choice['+ n +']';
+               formgroup[i].placeholder = 'choice'+ n;
+              console.log(formgroup[i].name);
+           }
+    });
+</script>
+    
+
+
+<!--<script type="text/javascript" src="controllers/clickController.client.js"></script>-->
+<!--<script type="text/javascript" src="/app/controllers/addChoiceController.client.js"></script>-->
+<% include partials/footer %>
