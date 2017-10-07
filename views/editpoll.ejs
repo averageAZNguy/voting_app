@@ -1,0 +1,16 @@
+<% include partials/header %>
+<div class="container">
+    <h1>EDIT PAGE</h1>    
+</div>
+
+<div class="container">
+    <form action="/main/<%=polls._id%>" method="POST">
+        <div class="field">
+            <label>New Option</label>
+            <input type="text" name="poll[new]" placeholder="Add in new option to poll.">
+        </div>
+         <input class="btn btn-primary" type="submit">
+    </form>
+   
+</div>
+<% include partials/footer %>

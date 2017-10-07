@@ -3,7 +3,13 @@
 var mongoose = require('mongoose');
 
 var pollSchema = new mongoose.Schema({
-    author: String,
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: "String"
+    },
     question: String,
     choices: [
        {

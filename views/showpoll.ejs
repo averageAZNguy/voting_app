@@ -2,9 +2,7 @@
     <div class="container">
         <h1>Show Poll Page</h1>
         <h4><strong><%= polls.question%></strong></h4>
-        <div class="container">
-            <canvas id="myChart" ></canvas>
-        </div>
+       
         <div class="container">
             <div class="row">
                 <%polls.choices.forEach(function(option){%>
@@ -12,7 +10,7 @@
                 <% }) %>
             </div>
         </div>
-        <form action="/main/<%=polls._id%>" method="POST">
+        <form action="/main/<%=polls._id%>/chart" method="POST">
             <ul>
                 <% polls.choices.forEach(function(option){%>
                 <li><input type="radio" name="voteid" value="<%=option._id%>"> <%=option.answer%></li>
@@ -21,59 +19,8 @@
             <input class="btn btn-success" type="submit">
         </form>
         <a class="btn btn-warning" href="/main/<%=polls._id%>/edit">EDIT</a>
-        <form id="delete" action="/main/<%=polls._id%>?_method=DELETE" method="POST"><button class="btn btn-danger">DELETE</button></form>
         <a href="/main">Go Back</a>
-</div>
-
-<script>
-    // CREATE BAR CHART
-    var ctx = $('#myChart');
-
-   var Poll = <%-JSON.stringify(polls)%>;
-    var legend = [];
-    var counter = [];
-    Poll.choices.forEach(function(choice){
-        legend.push(choice.answer);
-        counter.push(choice.count);
-    });
-    
-    var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: legend,
-        datasets: [{
-            label: Poll.question,
-            data: counter,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
-                }]
-            }
-        }
-    });
-
-</script>
+   
+    </div>
 
 <% include partials/footer %>

@@ -1,0 +1,30 @@
+<% include ./partials/header %>
+<div class="container profile">
+    <h1>Profile Page</h1>
+    <p>Email: <span id="profile-item"><%=currentUser.email%></span></p>
+    <p>Username: <span id="profile-item"><%=currentUser.username%></span></p>
+    <div class="container profile-poll">
+        <h4>Polls:</h4>
+        <ul>
+            <% Polls.forEach(function(poll){%>
+            <li><div class="row">
+                <div class="col-xs-4">
+                    <form  class="delete" action="/main/<%=poll._id%>?_method=DELETE" method="POST"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></form>
+                </div>
+                <!--<div class="col-xs-8 .text">-->
+                <!--    <a href="/main/<%=poll._id%>"><p><%=poll.question%></p></a>-->
+                <!--</div>-->
+                <div class="col-xs-8 .text">
+                    <a href="/main/<%=poll._id%>"><p>dafhdjfa hfue hdufah bdaduhfeuhdfjkd djsaflkjdf </p></a>
+                </div>
+            </div></li>
+            <% }) %>
+ 
+        </ul>
+    </div>
+    
+    
+</div>
+
+
+<% include ./partials/footer %>

@@ -12,11 +12,16 @@
 	</head>
 
 	<header>
-		
-		<a class="menu" href="/profile">Login</a>
-	    <a class="menu" href="/profile">Sign Up</a>
+		<%if(!currentUser){%>
+		<a class="menu" href="/register">Sign Up</a>
+		<a class="menu" href="/login">Login</a>
+		<a class="menu" href="/main">Polls</a>
+		<% } else { %>
+		<a class="menu" href="/profile"><%=currentUser.username%></a>
+	    <a class="menu" href="/logout">Logout</a>
+	    <a class="menu" href="/main">Polls</a>
 	    <a class="menu" href="/main/new">New Poll</a>
-	    
+	    <% } %>
 	</header>
 
 	<body>
