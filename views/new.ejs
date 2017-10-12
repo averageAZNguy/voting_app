@@ -56,39 +56,7 @@
 <a href="/main">Go Back</a>
 </div>
 
-<script>
- 
-    // Add more options
-      $('#addchoice').on('click', function(){
-          var formgroup = $('form-group');
-           var number = formgroup.length;
-           var newForm = '<li><form-group class="row"><div class="col-md-8"><input type="text" maxlength="50" title="delete" class="form-control" name="choice['+number+']" placeholder="choice'+number+'" required></div><span class=" glyphicon glyphicon-remove"></span></form-group></li>';
-           $('ul').append(newForm);
-      });
-      
-    // REMOVE OPTIONS
-    $('ul').on('click', 'span', function(event){
-        $(this).parent().fadeOut(500, function(){
-            $(this).parent().remove();
-            
-             // RENAME & REORDER ELEMENTS
-        var formgroup = $('ul form-group div input');
-           for(var i =0; i < formgroup.length; i++){
-               var n = i + 1;
-               formgroup[i].name = 'choice['+ n +']';
-               formgroup[i].placeholder = 'choice'+ n;
-           }
-        });
-        event.stopPropagation();  
-    });
-    tippy('.delete', {
-			  position: 'bottom',
-			  animation: 'scale',
-			  inertia: true,
-			  size: 'big',
-			  arrow: true
-			});
-</script>
+<% include scripts/new-script %>
     
 
 

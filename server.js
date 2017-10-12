@@ -53,6 +53,7 @@ app.use(function(req, res, next){
 
 
 routes(app, passport);
+authRoutes(app, passport);
 
 var port = process.env.PORT || 8080;
 app.listen(port,  function () {

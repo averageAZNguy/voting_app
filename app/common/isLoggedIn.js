@@ -7,5 +7,15 @@ module.exports = {
             return next();
         }
         res.redirect('/login');
-    }
+    },
+    	// convert to array function
+	toArray: function toArray(choices){
+				var arr = [];
+				for (var option in choices){
+					console.log(option, choices[option]);
+					arr.push({'answer': choices[option], "count": 0});
+				} 
+				return arr
+			}
+
 }
