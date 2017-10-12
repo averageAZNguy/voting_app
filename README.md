@@ -1,4 +1,4 @@
-# Voting App for CC
+# Voting App for FCC
 
 ##Author
 Quang-Thuy Hoang
