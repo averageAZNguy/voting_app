@@ -25,10 +25,10 @@ app.use('/common', express.static(process.cwd() + '/app/common'));
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 
-seedDB();
+// seedDB();
 
 app.use(session({
-	secret: 'secret sauce Voting App for Free code camp',
+	secret: 'secret sauce Voting App for Free code camp by Quang-Thuy Hoang',
 	resave: false,
 	saveUninitialized: false
 }));

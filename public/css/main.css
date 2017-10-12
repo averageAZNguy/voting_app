@@ -21,12 +21,29 @@ body {
 	font-size: 16px;
 	margin: 0;
 	padding: 0;
+	
 }
 
 header {
 	color: #00BCD4;
-	height: 56px;
-	margin: 0 0 14px 0;
+	height: 70px;
+	margin: 0 0 0 0;
+	text-align: center;
+	background-color:#dbdbdb;
+	font-family: 'Poppins', sans-serif;
+	font-size: 20px;
+}
+
+.tippy-touch { 
+	cursor: pointer !important;
+} 
+
+.section {
+	margin-top: 0.5em;
+}
+
+h1 {
+	font-family: 'Poppins', sans-serif;
 	text-align: center;
 }
 
@@ -41,8 +58,9 @@ p {
 
 .basic-box {
 	max-width: 700px;
-	border: 1px solid black;
-	padding: 10px;
+	/*border: 1px solid black;*/
+	padding: 20px;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.11);
 }
 
 li {
@@ -50,10 +68,32 @@ li {
 	margin: 0;
 	padding: 0;
 }
+
+
+
+.theme-banner {
+	background-color:#48bab4;
+	
+}
+
+.jumbotron {
+	/*background-color:#2bd1a5;*/
+	/*background-color: #f7c27e;*/
+	background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #2bd1a5, #f7c27e);
+  background: -moz-linear-gradient(left, #2bd1a5, #f7c27e);
+  background: -o-linear-gradient(left, #2bd1a5, #f7c27e);
+  background: linear-gradient(to right, #2bd1a5, #f7c27e); /* For Safari 5.1 to 6.0 */ /* For Opera 11.1 to 12.0 */ /* For Firefox 3.6 to 15 */ /* Standard syntax */
+}			
 /****** Header Styling ******/
 
 header p {
 	margin: 16px 0 5px 0;
+}
+
+.navbar {
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
 .menu {
@@ -146,6 +186,9 @@ img {
 	width: 100px;
 	font-weight: 500;
 }
+#addchoice {
+	background-color: #48bab4;
+}
 
 .btn:focus {	/* Remove outline when hovering over button */
 	outline: none;
@@ -158,30 +201,66 @@ img {
 }
 
 .btn-delete {	/* Styling for delete button */
-	background-color: #ECEFF1;
-	color: #212121;
+	background-color: #e83535;
+	color: white;
 }
 
-#click-nbr {
-	font-weight: 400;
+#delete {
+	float: left;
+	width:0;
+	display: inline-block;
+	transition: 0.2s linear;
+	opacity:0;
+	background-color: #e83535;
+	height: 100%;
 }
+
+section {
+	margin: 0 0 0 0;
+	padding-top:0px;
+	display: block;
+	height: 100%;
+}
+
+section:hover #delete{
+	float: left;
+	width: 60px;
+	opacity: 1.0;
+	height: 100%;
+}
+
+div.profile-poll {
+	background-color:#f7c27e;
+	padding-left: 0;
+	padding-right:0;
+	border: 1px solid #d1841f;
+}
+
+div.profile-poll > section {
+    background: #f7f7f7;
+    margin: 0 auto;
+  	height: 100%;
+}
+
+/*#click-nbr {*/
+/*	font-weight: 400;*/
+/*}*/
 
 /****** Profile Styling ******/
 
 .profile {
-	width: 350px;
-	height: 200px;
+	width: 700px;
+	height: 160px;
 	border-radius: 3px;
 	margin: 86px auto 0 auto;
-	background-color: #EEE;
+	background-color: #f7c27e;
 	text-align: center;
 	color: #000;
 }
 
 .profile-poll {
-	max-width: 400px;
 	border: 1px solid black;
-
+	width: 700px;
 }
 
 li {
@@ -193,18 +272,20 @@ li {
 	padding-left: 10px;
 }
 
-/*li:nth-child(2n){*/
-/*	background: #f7f7f7;	*/
-/*}*/
+
 
 li a {
 	margin-left: 5px;
 }
 
+.container a > p {
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+ 	max-width: 500px;
+ 	text-align:left;
+}
 
-/*span {*/
-/*	font-weight: 500;*/
-/*}*/
 
 .github-profile > img {
 	padding-top: 16px;
@@ -252,14 +333,28 @@ li a {
   margin-bottom: 80px;
 }
 
+#logo {
+	max-height: 250px;
+	max-width: 250px;
+}
+
+.brand {
+	margin: 3px 2px;
+}
+
 .form-signin {
   max-width: 380px;
   padding: 15px 35px 45px;
   margin: 0 auto;
   background-color: #fff;
   border: 1px solid rgba(0,0,0,0.1);  
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
 }
 
+.box-shadow {
+	 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
 .checkbox {
 	  font-weight: normal;
 	}
@@ -270,6 +365,11 @@ li a {
 
 .btn-block {
 	margin: 10px 5px 5px 0px;
+	width: 300px;
+	height: 40px;
+	text-align: center;
+	font-size: 20px;
+	line-height: 2;
 }
 
 .btn-danger {
@@ -277,6 +377,15 @@ li a {
 	text-align: center;
 	padding-left: 0;
 	/*height: 12px;*/
+}
+.btn-login {
+	background-color: #48bab4;
+	color: white;
+}
+
+.btn-github {
+	background-color: #35373a;
+	color:white;
 }
 
 li form {
@@ -295,3 +404,6 @@ li div a p{
 .text {
 	width: 100px;
 }
+
+/*** CHART PAGE STYLE ***/
+.

@@ -1,6 +1,7 @@
 'use strict';
 
 var path = process.cwd();
+var appurl = "https://dynamic-web-app-burgerflipper.c9users.io/";
 var Poll = require('../models/poll.js'),
 	User = require('../models/users.js');
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
@@ -72,7 +73,7 @@ module.exports = function (app, passport) {
 	// SHOW NEW POLL ROUTE
 	app.get('/main/:id', function(req, res) {
 		Poll.findById(req.params.id, function(err, polls){
-			res.render('showpoll', {polls : polls});	
+			res.render('showpoll', {polls : polls, path : appurl});	
 		});
 	});
 	
@@ -196,15 +197,6 @@ module.exports = function (app, passport) {
 			res.redirect('/main');
 		});
 	
-	app.route('/login/github')
-		.get(function (req, res) {
-			res.sendFile(path + '/public/login.html');
-			// res.sendFile(path + '/public/login1.html');
-		});
-		
-
-
-
 	app.route('/api/:id')
 		.get(isLoggedIn, function (req, res) {
 			res.json(req.user.github);
@@ -224,3 +216,11 @@ module.exports = function (app, passport) {
 		.post(isLoggedIn, clickHandler.addClick)
 		.delete(isLoggedIn, clickHandler.resetClicks);
 };
+
+	//=============
+	// URL SHORTERNER ROUTE - WORK IN PROGRESS
+	//=============
+	// app.get('/main/:id/url-api', function(req, res){
+	// 	res.send("Hello")
+	// })
+	// 	.get('https://humdrum-curve.glitch.me/zap/'+ req.params.id)

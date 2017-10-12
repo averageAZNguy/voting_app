@@ -1,16 +1,24 @@
 <% include ../partials/header %>
 
-
-  <div class="wrapper">
-    <form class="form-signin" action="/login" method="POST">       
+  <div class="container ">
+    <img id="logo" src="/public/img/boldmedia_logo.png">
+  </div>
+  <div class="wrapper ">
+    <form class="form-signin " action="/login" method="POST">       
       <h2 class="form-signin-heading">Sign In</h2>
       <input type="text" class="form-control" name="username" placeholder="User Name" required="" autofocus="" />
       <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit">LOGIN</button>  
-      <a href="/auth/github" class="btn btn-lg btn-primary btn-block">
+      <button class="btn btn-lg btn-login btn-block" type="submit">LOGIN</button>  
+        <br>
+        <p>OR</p>
+
+      <a href="/auth/github" class="btn btn-github btn-lg btn-block ">
         <img src="/public/img/github_32px.png" alt="github logo" />LOGIN WITH GITHUB</a>
     </form>
+    <div class="container">
+      <p>Don't have an account? <a href="/register">Sign Up</a></p>
+    </div>
   </div>
   
 <% include ../partials/footer %>

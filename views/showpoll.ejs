@@ -1,6 +1,9 @@
 <% include partials/header %>
+<div class="jumbotron theme-banner">
+    <h1>Vote Pedro!</h1>    
+</div>
     <div class="container">
-        <h1>Show Poll Page</h1>
+        <!--<h1>Show Poll Page</h1>-->
         <h4><strong><%= polls.question%></strong></h4>
        
         <div class="container">
@@ -18,9 +21,48 @@
             </ul>
             <input class="btn btn-success" type="submit">
         </form>
-        <a class="btn btn-warning" href="/main/<%=polls._id%>/edit">EDIT</a>
+        <a class="btn btn-warning" href="/main/<%=polls._id%>/edit">Add Answer</a>
+          <!--<div class="container">-->
+          <br>
+        <button id="share" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Share</button>
+    <!--</div>-->
+        <!--<br>-->
         <a href="/main">Go Back</a>
-   
     </div>
+    
 
+      <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Copy Link:</h4>
+        </div>
+        <div class="modal-body">
+          <p id="copyurl"><%= path +'main/' +polls._id%></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<script>
+// URL SHORTEN IN NEXT UPGRADE
+    // $('#share1').on("click", function(){
+      // var paths = <%-JSON.stringify(path)%> +'main/' + <%-JSON.stringify(polls._id)%>;
+      // const apiURL = "https://humdrum-curve.glitch.me/zap/";
+      // fetch(apiURL + paths, {'mode': 'no-cors'}).then(function(result){
+        // handle data from API
+        // console.log(result);
+        
+      // }).then(function(json) {
+        // displayResults(json);
+      // });
+    // });
+
+</script>
 <% include partials/footer %>

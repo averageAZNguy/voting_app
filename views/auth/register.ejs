@@ -1,6 +1,9 @@
 <% include ../partials/header %>
 
-
+  <div class="container ">
+    <img id="logo" src="/public/img/boldmedia_logo.png">
+  </div>
+  
   <div class="wrapper">
     <form class="form-signin" action="/register" method="POST">       
       <h2 class="form-signin-heading">Sign Up</h2>
@@ -8,7 +11,10 @@
       <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
       <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>   
+      <button class="btn btn-lg btn-login btn-block" type="submit">REGISTER</button>   
     </form>
+    <div class="container">
+      <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
   </div>
 <% include ../partials/footer %>
