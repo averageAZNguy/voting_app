@@ -3,6 +3,9 @@
   "version": "1.0.1",
   "description": "The elegant and lightweight boilerplate for full stack JavaScript.",
   "main": "server.js",
+  "engines": {
+  	"node": "6.11.2"
+  }
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johnstonbl01/clementinejs-fcc"

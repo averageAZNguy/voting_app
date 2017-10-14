@@ -55,7 +55,7 @@ app.use(function(req, res, next){
 routes(app, passport);
 authRoutes(app, passport);
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 5000;
 app.listen(port,  function () {
 	console.log('Node.js listening on port ' + port + '...');
 });
