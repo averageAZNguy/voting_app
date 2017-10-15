@@ -53,6 +53,7 @@ p {
 
 .container p {
 	text-align: center;
+	text-align-last: left;
 	padding: 0;
 }
 

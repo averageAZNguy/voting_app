@@ -14,7 +14,7 @@ var session = require('express-session'),
 
 var app = express();
 require('dotenv').load();
-
+var appurl = process.env.APP_URL;
 mongoose.connect(process.env.MONGO_URI);
 mongoose.Promise = global.Promise;
 
@@ -52,7 +52,7 @@ app.use(function(req, res, next){
 });
 
 
-routes(app, passport);
+routes(app, passport, appurl);
 authRoutes(app, passport);
 
 var port = process.env.PORT || 5000;

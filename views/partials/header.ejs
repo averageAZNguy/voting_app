@@ -22,7 +22,9 @@
 	<header>
 		<nav class="navbar navbar-light bg-faded">
 			<a class="brand pull-left" href="/main" ><img height="55px" width="55px" src="/public/img/Q.png"></a>
+			
 			<div class="section">
+				
 				<%if(!currentUser){%>
 				<a class="menu pull-right" href="/register">Sign Up</a>
 				<a class="menu pull-right" href="/login">Login</a>
@@ -33,6 +35,7 @@
 			    <a class="menu pull-right" href="/main"><i class="fa fa-bar-chart" title="Home"></i></a>
 			    <a class="menu pull-right" href="/profile"><%=currentUser.username%></a>
 		    <% } %>
+		    	<a class="menu pull-right" href="/about">About</a>
 		    </div>
 		</nav>
 		<script>
