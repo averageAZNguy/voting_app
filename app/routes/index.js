@@ -1,7 +1,6 @@
 'use strict';
 
 var path = process.cwd();
-var appurl = "https://dynamic-web-app-burgerflipper.c9users.io/";
 var Poll = require('../models/poll.js'),
 	User = require('../models/users.js');
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js'),
@@ -9,7 +8,7 @@ var ClickHandler = require(path + '/app/controllers/clickHandler.server.js'),
 var mongoose = require('mongoose'),
 	passport = require('passport');
 
-module.exports = function (app, passport) {
+module.exports = function (app, passport, appurl) {
 
 	var clickHandler = new ClickHandler();
 	
