@@ -8,15 +8,20 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+		<!-- Add the slick-theme.css if you want default styling -->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+		<link href="/public/css/main.1.css" rel="stylesheet" type="text/css">
 		<link href="/public/css/tippy.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/css/bootstrap-modal.min.css" />
-		
+	
+
 		<script type="text/javascript" src="common/tippy.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modalmanager.min.js"></script>
+		
 	</head>
 
 	<header>
@@ -28,12 +33,12 @@
 				<%if(!currentUser){%>
 				<a class="menu pull-right" href="/register">Sign Up</a>
 				<a class="menu pull-right" href="/login">Login</a>
-				<!--<a class="menu pull-right" href="/main"><i class="fa fa-bar-chart" title="Home" aria-hidden="true"></i></a>-->
+				<a class="menu pull-right" href="/main"><i class="fa fa-bar-chart" title="Home" aria-hidden="true"></i></a>
 				<% } else { %>
 			    <a class="menu pull-right" href="/logout">Logout</a>
 			    <a class="menu pull-right" href="/main/new"><i class="fa fa-pencil-square-o" title="Create New Poll" aria-hidden="true"></i></a>
-			    <a class="menu pull-right" href="/profile"><i class="fa fa-bar-chart" title="Home"></i></a>
-			    <div class="menu pull-right"><%=currentUser.username%></div>
+			    <a class="menu pull-right" href="/main"><i class="fa fa-bar-chart" title="Home"></i></a>
+			    <a class="menu pull-right" href="/profile"><%=currentUser.username%></a>
 		    <% } %>
 		    	<a class="menu pull-right" href="/about">About</a>
 		    </div>

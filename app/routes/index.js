@@ -25,7 +25,13 @@ module.exports = function (app, passport, appurl) {
 		});
 
 	app.get('/about', function(req, res){
-		res.render('about');
+		Poll.find({}, function(err, polls){
+			if(err){
+				console.log(err);
+			} else {
+				res.render('about', {polls: polls});	
+			}
+		})
 	})
 			
 	// NEW POLL ROUTE	

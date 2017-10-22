@@ -1,15 +1,85 @@
-<% include partials/header %>
-<div class="jumbotron theme-banner">
-    <h1>About</h1>    
+<% include partials/header1 %>
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="title-info">
+          <div class="title">
+            <h1>Ask A Question</h1>
+          </div>
+          <div class="content">
+            <p>Welcome to AskQuestions! If you have a random question you've been super curious to ask your friends and random people on the internet, then go ahead and try and ask some questions. Sign up to ask a question. Anyone can choose a response, but you'll need sign in to pick your own answer. Get a quick nonscientific survey.</p>
+          </div>
+          <div class="wrapper">
+          <a class="btn btn-lg bg-white j-bottom" href="/register">Sign Up</a>
+          <a class="btn btn-lg bg-green j-bottom" href="/login">Sign In</a>
+          </div>
+         </div>
+        
+      </div>
+      <div class="col-md-7">
+        <div class="title-info">
+          <div class="row">
+            <div class="col-xs-5">
+          <div class="container icon-instruction bg-white">
+            <img src="https://visualpharm.com/assets/723/Talk%20Female-595b40b85ba036ed117dabf6.svg">
+          </div>
+            </div>
+            <div class="col-xs-7">
+              <div class="instruct">
+                <p>Ask a question.</p>
+              </div>
+            </div>
+          </div>
+           <div class="row">
+            <div class="col-xs-5">
+          <div class="container icon-instruction bg-white">
+            <img src="https://image.flaticon.com/icons/svg/243/243337.svg">
+          </div>
+            </div>
+            <div class="col-xs-7">
+              <div class="instruct">
+                <p>Share and get answer.</p>
+              </div>
+            </div>
+          </div>
+           <div class="row">
+            <div class="col-xs-5">
+          <div class="container icon-instruction bg-white">
+            <img src="https://visualpharm.com/assets/648/Futures-595b40b65ba036ed117d411b.svg">
+          </div>
+            </div>
+            <div class="col-xs-7">
+              <div class="instruct">
+                <p>Check the results.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 </div>
-<div class="container about">
 
-	<p>Hi there. Welcome to AskQuestions! If you have a random question you've been super curious to ask your friends and random people on the internet, then go ahead and try and ask some questions. If you want to ask a question, please sign up. If you already have a github account you can login through your own github account. From there, you can create and ask your very own questions and share the link with your friends. They can submit their response and you both can see the final result. Anyone can vote, even if you don't have an account. But only registered users can ask questions. Account holders can also add their own answers to submited questions.</p>
-
-
+<div class="container title">
+  <h1>Read some of the questions people have already asked</h1>
+  <div class="mouse title">
+    <div class="m-scroll-btn title"></div>
+  </div>
 </div>
 
+<div class="container">
+  <ul class="slickContainer">
+    <% if(polls.length >= 6) { var len = 6 } else { var len = polls.length }%>
+    <% for(var i = 0; i < len; i++){ %>
+    <a class="slickItem title" href="main/<%=polls[i]._id%>/chart"><li><p><%= polls[i].question %></p></li></a>
+    <% } %>
+  </ul>
+</div>
+  
 
-
+<% include scripts/cdn %>
+<% include scripts/slick %>
 
 <% include partials/footer %>

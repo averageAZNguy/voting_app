@@ -41,14 +41,16 @@ module.exports = function(app, passport){
     	passport.authenticate('local',
     	{
     		successRedirect: '/main',
-    		failureRedirect: '/login'
+    		failureRedirect: '/login',
+    		failureFlash: true
     	}), function(req, res){
+    	
     });
 	
 	// LOGOUT ROUTE
 	app.get('/logout', function(req, res){
 		req.logout();
-		res.redirect('/main')
+		res.redirect('/about')
 	})
 	
 	app.get('/profile', verify.isLoggedIn, function (req, res) {
