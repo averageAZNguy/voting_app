@@ -4,9 +4,9 @@
   "description": "Ask questions project for FCC",
   "main": "server.js",
   "engines": {
-  	"node": "6.11.2"
+    "node": "6.11.2"
   },
-  "repository" : {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/averageAZNguy/voting_app"
   },
@@ -27,6 +27,7 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
     "dotenv": "^1.2.0",
     "ejs": "^2.5.7",
     "express": "^4.12.4",
