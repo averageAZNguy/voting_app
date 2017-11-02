@@ -35,6 +35,11 @@ of polls in chart form. (This could be implemented using Chart.js or Google Char
 User Story: As an authenticated user, if I don't like the options on a poll, I
 can create a new option.
 
+### Updates:
+11.2.17 - 
++Local registration/signup integration with other passport strategy (github, 
+twitter, facebook)
++Email Validation - web app sends new user verification email for registration
 
 ### Prerequisites
 
