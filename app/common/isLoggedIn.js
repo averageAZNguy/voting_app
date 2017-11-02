@@ -6,7 +6,9 @@ module.exports = {
         if(req.isAuthenticated()){
             return next();
         }
-        res.redirect('/login');
+        req.flash("error", "You need to login");
+        req.flash("success","Welcome to Ask questions");
+    	return res.redirect('/login');
     },
     	// convert to array function
 	toArray: function toArray(choices){

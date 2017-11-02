@@ -25,9 +25,8 @@ User.methods.generateHash = function(password) {
 };
 
 User.methods.validatePassword = function(password) {
-	return bcrypt.compareSync(password, this.local.password);
+	return bcrypt.compareSync(password, this.password);
 };
-
 // User.plugin(passportlocalmongoose); //gives all passport methods to user models
 // The plugin provides already made methods to use without having to write them
 module.exports = mongoose.model('User', User);

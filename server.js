@@ -43,7 +43,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // passport.use(new localStrategy(User.authenticate()));
-passport.use(new localStrategy('local-register', {
+// passport.use(new localStrategy({
 // 	passReqToCallback : true // allows us to pass back the entire request to the callback
 // 	}, function(request, username, password, done) {
 //     	User.findOne({ username: username }, function(err, user) {
@@ -64,14 +64,14 @@ passport.use(new localStrategy('local-register', {
 //   }
 // 	))
 require('./app/config/passport')(passport);
-passport.serializeUser(function(user, done){
-	done(null,user.id);
-});
-passport.deserializeUser(function(id, done){
-	User.findById(id, function(err, user){
-		done(err,user);
-	})
-})
+// passport.serializeUser(function(user, done){
+// 	done(null,user.id);
+// });
+// passport.deserializeUser(function(id, done){
+// 	User.findById(id, function(err, user){
+// 		done(err,user);
+// 	})
+// })
 app.use(function(req, res, next){
 	res.locals.currentUser = req.user;
 	next();
@@ -85,3 +85,6 @@ var port = process.env.PORT || 5000;
 app.listen(port,  function () {
 	console.log('Node.js listening on port ' + port + '...');
 });
+
+
+// require('../test/test')();

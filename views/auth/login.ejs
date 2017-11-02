@@ -3,10 +3,14 @@
   <div class="container ">
     <img id="logo" src="/public/img/boldmedia_logo.png">
   </div>
+  <% if(message.length > 0) {%>
+    <div class="container alert alert-danger"><%=message%></div>
+  <% } %>
+  
   <div class="wrapper ">
     <form class="form-signin " action="/login" method="POST">       
       <h2 class="form-signin-heading">Sign In</h2>
-      <input type="text" class="form-control" name="username" placeholder="User Name" required="" autofocus="" />
+      <input type="text" class="form-control" name="email" placeholder="User Name" required="" autofocus="" />
       <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
 
       <button class="btn btn-lg btn-login btn-block" type="submit">LOGIN</button>  

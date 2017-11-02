@@ -17,7 +17,7 @@ module.exports = function(app, passport){
 	var clickHandler = new ClickHandler();
 	// REGISTER ROUTE
 	app.get('/register', function(req, res){
-        res.render('auth/register');
+        res.render('auth/register', {message : req.flash("signupMessage")});
     });
     
     app.post('/register', passport.authenticate('local-register', {
@@ -47,18 +47,17 @@ module.exports = function(app, passport){
     //     	return res.redirect('/profile') 
     // 	}, 
     	function(req, res){
-		
     	res.render('auth/login', {message: req.flash("error")});
     });
     
     app.post('/login', 
-    	passport.authenticate('local',
+    	passport.authenticate('local-login',
     	{
     		successRedirect: '/profile',
     		failureRedirect: '/login',
     		failureFlash: true
     	}), function(req, res){
-    	
+
     });
 	
 	// LOGOUT ROUTE
@@ -75,7 +74,7 @@ module.exports = function(app, passport){
 				return res.redirect('/login');
 			}
 			console.log(foundPoll);
-			res.render('profile', {Polls: foundPoll}, {message: req.flash("success")});
+			res.render('profile', {Polls: foundPoll});
 		})
 	});
 	

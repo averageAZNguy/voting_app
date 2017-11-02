@@ -3,7 +3,9 @@
   <div class="container ">
     <img id="logo" src="/public/img/boldmedia_logo.png">
   </div>
-  
+  <% if(message.length > 0){ %>
+    <div class="container alert alert-danger"><%=message%></div>
+  <% } %>
   <div class="wrapper">
     <form class="form-signin" action="/register" method="POST">       
       <h2 class="form-signin-heading">Sign Up</h2>
