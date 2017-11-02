@@ -7,7 +7,8 @@ var Poll = require('../models/poll.js'),
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js'),
     verify = require('../common/isLoggedIn.js');
 var mongoose = require('mongoose'),
-	passport = require('passport');
+	passport = require('passport'),
+	flash = require('connect-flash');
 
 module.exports = function(app, passport){
     //=============
@@ -19,28 +20,41 @@ module.exports = function(app, passport){
         res.render('auth/register');
     });
     
-    app.post('/register', function(req, res){
-    	var newUser = new User({username: req.body.username, email: req.body.email})
-    	User.register(newUser, req.body.password, function(err, user){
-    		if(err){
-    			console.log(err);
-    			return res.redirect('/register');
-    		}
-    		passport.authenticate('local')(req, res, function(){
-    			res.redirect('/main');
-    		})
-    	})
-    });
+    app.post('/register', passport.authenticate('local-register', {
+    	successRedirect : '/profile',
+    	failureRedirect : '/register',
+    	failureFlash : true
+    }));
+    
+    // (req, res){
+    // 	var newUser = new User({username: req.body.username, email: req.body.email})
+    // 	User.register(newUser, req.body.password, function(err, user){
+    // 		if(err){
+    // 			console.log(err);
+    // 			return res.redirect('/register');
+    // 		}
+    // 		passport.authenticate('local')(req, res, function(){
+    // 			res.redirect('/main');
+    // 		})
+    // 	})
+    // });
     
     // LOGIN ROUTE
-    app.get('/login', function(req, res){
-    	res.render('auth/login');
+    app.get('/login', 
+    // function(req, res, next) {
+    // 		if(!req.user){ return next() }
+    // 		req.flash("success", "Welcome to Ask Questions");
+    //     	return res.redirect('/profile') 
+    // 	}, 
+    	function(req, res){
+		
+    	res.render('auth/login', {message: req.flash("error")});
     });
     
     app.post('/login', 
     	passport.authenticate('local',
     	{
-    		successRedirect: '/main',
+    		successRedirect: '/profile',
     		failureRedirect: '/login',
     		failureFlash: true
     	}), function(req, res){
@@ -54,14 +68,14 @@ module.exports = function(app, passport){
 	})
 	
 	app.get('/profile', verify.isLoggedIn, function (req, res) {
-		console.log(req.user);
+
 		Poll.find({'author.id' : req.user._id}, function(err, foundPoll){
 			if(err){
 				console.log(err);
 				return res.redirect('/login');
 			}
 			console.log(foundPoll);
-			res.render('profile', {Polls: foundPoll});
+			res.render('profile', {Polls: foundPoll}, {message: req.flash("success")});
 		})
 	});
 	

@@ -8,8 +8,11 @@ var mongoose = require('mongoose'),
 	User = require('./app/models/users.js');
 var passport = require('passport'),
 	localStrategy = require('passport-local');
-var bodyparser = require('body-parser')
+var bodyparser = require('body-parser'),
+	cookieParser = require('cookie-parser'),
+	morgan = require('morgan');
 var session = require('express-session'),
+	flash = require('connect-flash'),
 	seedDB = require('./seed');
 
 var app = express();
@@ -24,6 +27,9 @@ app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/common', express.static(process.cwd() + '/app/common'));
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
+app.use(morgan('dev')); // logs every request to console
+app.use(cookieParser()); // read cookies for authentication
+app.use(flash());
 
 // seedDB();
 
@@ -36,7 +42,27 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new localStrategy(User.authenticate()));
+// passport.use(new localStrategy(User.authenticate()));
+passport.use(new localStrategy('local-register', {
+// 	passReqToCallback : true // allows us to pass back the entire request to the callback
+// 	}, function(request, username, password, done) {
+//     	User.findOne({ username: username }, function(err, user) {
+    		
+//     		if (err) { return done(err); }
+//     		if (!user) {
+//         		return done(null, false);
+//     		}
+//     		if (user) {
+//     			console.log("hey it works")
+//     			return done(null, false)
+//     		}
+//     		// if (!user.validPassword(password)) {
+//       //  		return done(null, false, { message: 'Incorrect password.' });
+//     		//  }
+//     	return done(null, user);
+//     });
+//   }
+// 	))
 require('./app/config/passport')(passport);
 passport.serializeUser(function(user, done){
 	done(null,user.id);
