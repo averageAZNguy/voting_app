@@ -15,6 +15,7 @@ module.exports = function(app, passport){
 	// AUTHENTICATION ROUTE
 	//=============
 	var clickHandler = new ClickHandler();
+	
 	// REGISTER ROUTE
 	app.get('/register', function(req, res){
         res.render('auth/register', {message : req.flash("signupMessage")});
@@ -26,26 +27,16 @@ module.exports = function(app, passport){
     	failureFlash : true
     }));
     
-    // (req, res){
-    // 	var newUser = new User({username: req.body.username, email: req.body.email})
-    // 	User.register(newUser, req.body.password, function(err, user){
-    // 		if(err){
-    // 			console.log(err);
-    // 			return res.redirect('/register');
-    // 		}
-    // 		passport.authenticate('local')(req, res, function(){
-    // 			res.redirect('/main');
-    // 		})
-    // 	})
-    // });
-    
     // LOGIN ROUTE
     app.get('/login', 
-    // function(req, res, next) {
-    // 		if(!req.user){ return next() }
-    // 		req.flash("success", "Welcome to Ask Questions");
-    //     	return res.redirect('/profile') 
-    // 	}, 
+    function(req, res, next) {
+    	// console.log(req.user)
+    		if(!req.user){ 
+    			return next() 
+    		}
+    		req.flash("success", "Welcome to Ask Questions");
+        	return res.redirect('/profile') 
+    	}, 
     	function(req, res){
     	res.render('auth/login', {message: req.flash("error")});
     });
@@ -79,10 +70,11 @@ module.exports = function(app, passport){
 	});
 	
 	app.route('/')
-		.get(verify.isLoggedIn, function (req, res) {
-			res.redirect('/main');
+		.get(function (req, res) {
+			res.redirect('/about');
 		});
 	
+	// GITHUB AUTH
 	app.route('/api/:id')
 		.get(verify.isLoggedIn, function (req, res) {
 			res.json(req.user.github);
@@ -92,7 +84,7 @@ module.exports = function(app, passport){
 
 	app.route('/auth/github/callback')
 		.get(passport.authenticate('github', {
-			successRedirect: '/main',
+			successRedirect: '/profile',
 			failureRedirect: '/login',
 			failureFlash: true
 		}));

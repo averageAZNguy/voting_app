@@ -55,11 +55,11 @@ module.exports = function (passport) {
 					}
 					// check if password is correct criteria
 					if(password.length < 6) {
-						return done(null, false, req.flash("signupMessage", "Password has to be a mininum of 6 characters"))
+						return done(null, false, req.flash("signupMessage", "Password has to be a mininum of 6 characters, have at least one uppercase, one lowercase, and one number."))
 					}
 
 					if(!pwCriteria.test(password)){
-						return done(null, false, req.flash("signupMessage", "Password has to have at least one uppercase, one lowercase, and one number"))
+						return done(null, false, req.flash("signupMessage", "Password has to be a mininum of 6 characters, have at least one uppercase, one lowercase, and one number."))
 					}
 					// if no user, create new user
 					var newUser = new User();
@@ -113,7 +113,7 @@ module.exports = function (passport) {
 	},
 	function (token, refreshToken, profile, done) {
 		process.nextTick(function () {
-			User.findOne({ 'github.id': profile.id }, function (err, user) {
+			User.findOne({ 'email': profile._json.email }, function (err, user) {
 				if (err) {
 					return done(err);
 				}
@@ -123,6 +123,7 @@ module.exports = function (passport) {
 					var newUser = new User();
 						newUser.github.id = profile.id;
 						newUser.username = profile.username;
+						newUser.email = profile._json.email;
 						newUser.github.username = profile.username;
 						newUser.github.displayName = profile.displayName;
 						newUser.github.publicRepos = profile._json.public_repos;

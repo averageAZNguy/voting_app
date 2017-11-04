@@ -7,7 +7,8 @@ var routes = require('./app/routes/index.js'),
 var mongoose = require('mongoose'),
 	User = require('./app/models/users.js');
 var passport = require('passport'),
-	localStrategy = require('passport-local');
+	localStrategy = require('passport-local'),
+	nev = require('email-verification')(mongoose);
 var bodyparser = require('body-parser'),
 	cookieParser = require('cookie-parser'),
 	morgan = require('morgan');
@@ -43,35 +44,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // passport.use(new localStrategy(User.authenticate()));
-// passport.use(new localStrategy({
-// 	passReqToCallback : true // allows us to pass back the entire request to the callback
-// 	}, function(request, username, password, done) {
-//     	User.findOne({ username: username }, function(err, user) {
-    		
-//     		if (err) { return done(err); }
-//     		if (!user) {
-//         		return done(null, false);
-//     		}
-//     		if (user) {
-//     			console.log("hey it works")
-//     			return done(null, false)
-//     		}
-//     		// if (!user.validPassword(password)) {
-//       //  		return done(null, false, { message: 'Incorrect password.' });
-//     		//  }
-//     	return done(null, user);
-//     });
-//   }
-// 	))
+// PASSPORT Strategies
 require('./app/config/passport')(passport);
-// passport.serializeUser(function(user, done){
-// 	done(null,user.id);
-// });
-// passport.deserializeUser(function(id, done){
-// 	User.findById(id, function(err, user){
-// 		done(err,user);
-// 	})
-// })
+
 app.use(function(req, res, next){
 	res.locals.currentUser = req.user;
 	next();
