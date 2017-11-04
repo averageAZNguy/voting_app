@@ -29,10 +29,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "connect-flash": "^0.1.1",
-<<<<<<< HEAD
     "cookie-parser": "^1.4.3",
-=======
->>>>>>> master
     "dotenv": "^1.2.0",
     "ejs": "^2.5.7",
     "email-verification": "^0.4.6",
