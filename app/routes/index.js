@@ -44,6 +44,7 @@ module.exports = function (app, passport, appurl) {
 			var question = req.body.poll.subject;
 			var choices = verify.toArray(req.body.choice);
 			var author = {id: req.user._id, username: req.user.username};
+			console.log(author);
 			var pollObject = {author: author, question: question, 'choices': choices}; 
 
 			Poll.create(pollObject, function(err, newPoll) {
